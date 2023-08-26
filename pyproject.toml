@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "got-a-job"
+version = "0.1.0"
+description = ""
+authors = ["Serov Ivan <serovvans@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "got_a_job"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
