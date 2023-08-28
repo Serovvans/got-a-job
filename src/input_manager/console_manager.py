@@ -1,4 +1,4 @@
-from src.input_manager.base_class import InputManager
+from src.input_manager.input_manager import InputManager
 from src.query.query import Query
 from src.api.base_api import Api
 
