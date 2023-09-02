@@ -6,9 +6,9 @@ from src.commander.commander import Commander
 
 class ConsoleCommander(Commander):
     """Обработка команд из консоли"""
-    def __init__(self, input_manager: InputManager, query: Query):
+    def __init__(self, input_manager: InputManager):
         self.input_manager = input_manager
-        self.query = query
+        self.query = Query()
 
     def run(self):
         command = self.input_manager.get_base_command()
@@ -21,3 +21,5 @@ class ConsoleCommander(Commander):
                 self.input_manager.choose_platforms(dict(), self.query)
 
             command = self.input_manager.get_base_command()
+
+        return self.query
