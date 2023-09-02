@@ -5,6 +5,14 @@ from src.api.base_api import Api
 
 class ConsoleInputManager(InputManager):
     """Менеджер ввода данных из консоли"""
+    def get_base_command(self):
+        """
+        Читает команду пользователя
+        :return: строка с командой
+        """
+        command = input("Введите команду")
+        return command.lower()
+
     def get_vacancies_by_keywords(self, query: Query) -> Query:
         """
         Выбор ключевых слов для поиска

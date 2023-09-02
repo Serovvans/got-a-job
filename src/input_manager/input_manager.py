@@ -5,6 +5,11 @@ from src.api.base_api import Api
 
 class InputManager(ABC):
     """Работа с входными данными от пользователя"""
+    @abstractmethod
+    def get_base_command(self):
+        """Читает и возвращает базовую команду"""
+        pass
+
 
     @abstractmethod
     def get_vacancies_by_keywords(self, query: Query) -> Query:
