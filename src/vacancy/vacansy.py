@@ -1,5 +1,5 @@
 class Vacancy:
-    """Класс с информацией о вакансии"""
+    """Класс-представление вакансии"""
     def __init__(self, position: str, min_salary: int, max_salary: int, requirements: str):
         self.__position = position
         self.__min_salary = min_salary
