@@ -10,7 +10,8 @@ class ConsoleCommander(Commander):
         self.input_manager = input_manager
         self.query = Query()
 
-    def run(self):
+    def run(self) -> Query:
+        """Запуск цикла работы обработки команд"""
         command = self.input_manager.get_base_command()
         while command != "exit":
             if command == "keywords":
