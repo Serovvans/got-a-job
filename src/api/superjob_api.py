@@ -4,6 +4,7 @@ import os
 from src.api.base_api import Api
 from src.query.query import Query
 from src.vacancy.vacansy import Vacancy
+from src.errors.parsing_error import ParsingError
 
 
 class SuperJobApi(Api):
@@ -42,9 +43,11 @@ class SuperJobApi(Api):
         if query.key_words:
             self.__params["keyword"] = query.key_words[0]
 
-        response = requests.get(self.__url, headers=self.__headers, params=self.__params).json()
-        # TODO: Обработать ошибку запроса
-        return response["objects"]
+        response = requests.get(self.__url, headers=self.__headers, params=self.__params)
+        if response.status_code != 200:
+            raise ParsingError(f"Ошибка получения вакансий с сайта superjob! Статус {response.status_code}")
+
+        return response.json()["objects"]
 
     @staticmethod
     def sort_vacancies(vacancies: list[Vacancy]) -> list[Vacancy]:
