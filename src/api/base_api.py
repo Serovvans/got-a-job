@@ -11,3 +11,8 @@ class Api(ABC):
     @abstractmethod
     def put_to_vacancy(item: dict):
         pass
+
+    @staticmethod
+    @abstractmethod
+    def sort_vacancies(vacancies):
+        pass
