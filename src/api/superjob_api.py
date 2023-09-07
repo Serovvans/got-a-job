@@ -33,7 +33,7 @@ class SuperJobApi(Api):
 
         return vacancy
 
-    def get_response(self, query: Query) -> list[dict]:
+    def __get_response(self, query: Query) -> list[dict]:
         """
         Парсит вакансии по 1 ключевому слову
         :param query: запрос пользователя
@@ -43,6 +43,7 @@ class SuperJobApi(Api):
             self.__params["keyword"] = query.key_words[0]
 
         response = requests.get(self.__url, headers=self.__headers, params=self.__params).json()
+        # TODO: Обработать ошибку запроса
         return response["objects"]
 
     @staticmethod
@@ -61,7 +62,7 @@ class SuperJobApi(Api):
         :param query: Запрос пользователя
         :return: ответ на запрос с сайта SuperJob
         """
-        response = self.get_response(query)
+        response = self.__get_response(query)
 
         answer = list(map(self.put_to_vacancy, response))
         if query.need_sort:

@@ -21,6 +21,7 @@ class HHApi(Api):
         """
         self.__params["text"] = " ".join(query.key_words)
         response = requests.get(self.url, self.__params).json()["items"]
+        # TODO: Обработать ошибку запроса
 
         return response
 
