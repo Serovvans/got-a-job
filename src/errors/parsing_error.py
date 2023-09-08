@@ -1,4 +1,4 @@
 class ParsingError(Exception):
-    """Ошибка прарсинга"""
+    """Ошибка парсинга"""
     def __init__(self, message):
         super().__init__(message)
