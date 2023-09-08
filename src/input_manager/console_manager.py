@@ -10,7 +10,7 @@ class ConsoleInputManager(InputManager):
         Читает команду пользователя
         :return: строка с командой
         """
-        command = input("Введите команду")
+        command = input("Введите команду: ")
         return command.lower()
 
     def get_vacancies_by_keywords(self, query: Query) -> Query:
@@ -40,7 +40,7 @@ class ConsoleInputManager(InputManager):
         :param query: Настриваемый запрос
         :return: запрос с настроенным полем api_list
         """
-        user_response: str = input("Введите название сервиса или stop(для выхода):")
+        user_response: str = input("Введите название сервиса или stop(для выхода):").lower()
         while user_response != "stop":
             try:
                 query.api_list.append(apis_names[user_response])

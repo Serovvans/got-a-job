@@ -2,7 +2,7 @@ import requests
 
 from src.api.base_api import Api
 from src.query.query import Query
-from src.vacancy.vacansy import Vacancy
+from src.vacansy import Vacancy
 from src.errors.parsing_error import ParsingError
 
 
@@ -20,8 +20,8 @@ class HHApi(Api):
         :param query: запрос
         :return: список с информацией о вакансиях
         """
-        self.__params["text"] = " ".join(query.key_words)
-        response = requests.get(self.url, self.__params)
+        self.__params["text"] = " ".join(query.keywords)
+        response = requests.get(self.url, params=self.__params)
         if response.status_code != 200:
             raise ParsingError(f"Ошибка получения вакансий с сайта superjob! Статус {response.status_code}")
 

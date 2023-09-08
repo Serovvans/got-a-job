@@ -1,13 +1,21 @@
-from src.api.hh_api import HHApi
-from src.api.superjob_api import SuperJobApi
-from src.query.query import Query
+from src.input_manager.console_manager import ConsoleInputManager
+from src.viewer.console_viewer import ConsoleViewer
+from src.commander.console_commander import ConsoleCommander
+from src.commander.list_commands import commands
+from src.api.list_apis import apis
+
+
+def main():
+    input_manager = ConsoleInputManager()
+    viewer = ConsoleViewer()
+    commander = ConsoleCommander(input_manager=input_manager, viewer=viewer)
+
+    for command in commands:
+        viewer.show_message(f"{command} - {commands[command]}")
+
+    viewer.show_message(f"Доступные сайты: {' '.join(apis.keys())}")
+    commander.run()
 
 
 if __name__ == "__main__":
-    query = Query()
-    query.key_words = ["python", "ML"]
-    query.need_sort = True
-
-    api = SuperJobApi()
-    for item in api.get_vacancies(query):
-        print(item.min_salary)
+    main()
