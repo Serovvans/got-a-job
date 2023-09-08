@@ -3,7 +3,7 @@ import os
 
 from src.api.base_api import Api
 from src.query.query import Query
-from src.vacancy.vacansy import Vacancy
+from src.vacansy import Vacancy
 from src.errors.parsing_error import ParsingError
 
 
@@ -40,8 +40,8 @@ class SuperJobApi(Api):
         :param query: запрос пользователя
         :return: список словарей с информаций о вакансиях
         """
-        if query.key_words:
-            self.__params["keyword"] = query.key_words[0]
+        if query.keywords:
+            self.__params["keyword"] = query.keywords[0]
 
         response = requests.get(self.__url, headers=self.__headers, params=self.__params)
         if response.status_code != 200:
